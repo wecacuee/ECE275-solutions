@@ -1,0 +1,21 @@
+module lab3part2top(
+    input [7:0] SW,
+    output [6:0] HEX0_D,
+	 output [6:0] HEX1_D
+);
+	BCD_Display display0 (SW[3:0], HEX0_D);
+	BCD_Display display1 (SW[7:4], HEX1_D);
+endmodule
+
+module BCD_Display(
+	input [3:0] BCDValue,
+	output [6:0] LED_Segment
+);
+	 assign LED_Segment[0] = ~(BCDValue[3]|BCDValue[1]|(BCDValue[2]&BCDValue[0])|((~BCDValue[2])&(~BCDValue[0])));
+    assign LED_Segment[1] = ~((~BCDValue[2])|(~BCDValue[1])&(~BCDValue[0])|BCDValue[1]&BCDValue[0]);
+    assign LED_Segment[2] = ~(BCDValue[2]|(~BCDValue[1])|BCDValue[0]);
+    assign LED_Segment[3] = ~((~BCDValue[2])&(~BCDValue[0])|BCDValue[1]&(~BCDValue[0])|BCDValue[2]&(~BCDValue[1])&BCDValue[0]|(~BCDValue[2])&BCDValue[1]|BCDValue[3]);
+    assign LED_Segment[4] = ~((~BCDValue[2])&(~BCDValue[0])|BCDValue[1]&(~BCDValue[0]));
+    assign LED_Segment[5] = ~(BCDValue[3]|(~BCDValue[1])&(~BCDValue[0])|BCDValue[2]&(~BCDValue[1])|BCDValue[2]&(~BCDValue[0]));
+    assign LED_Segment[6] = ~(BCDValue[3]|BCDValue[2]&(~BCDValue[1])|(~BCDValue[2])&BCDValue[1]|BCDValue[1]&(~BCDValue[0]));
+endmodule
