@@ -1,7 +1,7 @@
-module lab2part3top (input [8:0] SW, output [3:0] LEDG);
-
-	assign LEDG[0] = (~SW[8] & SW[0]) | (SW[8] & SW[4]);
-	assign LEDG[1] = (~SW[8] & SW[1]) | (SW[8] & SW[5]);
-	assign LEDG[2] = (~SW[8] & SW[2]) | (SW[8] & SW[6]);
-	assign LEDG[3] = (~SW[8] & SW[3]) | (SW[8] & SW[7]);
+module lab2part3top (
+    input  wire [8:0] SW,
+    output wire [3:0] LEDG
+);
+    wire [3:0] SW8 = {4{SW[8]}}; // creates 4 copies
+    assign LEDG = (~SW8 & SW[3:0]) | (SW8 & SW[7:4]);
 endmodule

@@ -1,10 +1,10 @@
 // module in verilog is like a function in C
 module lab1top(
     // input specifies the input wires to a circuit
-    input [9:0] SW,
+    input  wire [9:0] SW,
     // output specifices the output wires from a circuit
     // In C language these will be return  variable
-    output [9:0] LEDG
+    output wire [9:0] LEDG
 );
     // assign keyword creates continuous assignment. 
     // It connects the two variables with a wire.
