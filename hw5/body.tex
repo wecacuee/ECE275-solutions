@@ -158,6 +158,57 @@ c) “Exactly two of the inscriptions are true.”\\
 d) “All three inscriptions are true.”\\
 \end{problem}
 
+\begin{sol}
+Let $T_1$ denote that "Treasure is in Trunk 1", $T_2$ denote "Treasure is in
+Trunk 2", $T_3$ denote "Treasure is in Trunk 3."
+
+\noindent 
+The inscription on Trunk 1 says: $I_1 = T_3$.\\
+The inscription on Trunk 2 says: $I_2 = T_1$. \\
+The inscription on Trunk 3 says: $I_3 = \overline{T_3}$.
+
+\noindent 
+a) "All the inscriptions are false" 
+$= \overline{T_3} \cdot \overline{T_1} \cdot T_3 = \text{False}$. Hence, the Queen cannot say "a)".
+
+\noindent 
+b) "Exactly one of the inscriptions is true"
+\begin{align*}
+  &= I_1 \cdot \overline{I_2} \cdot \overline{I_3} + 
+  \overline{I_1} \cdot {I_2} \cdot \overline{I_3} + 
+  \overline{I_1} \cdot \overline{I_2} \cdot {I_3} \\
+&= T_3 \cdot \overline{T_1} \cdot {T_3} + \overline{T_3} \cdot T_1 \cdot {T_3} 
++ \overline{T_3} \cdot \overline{T_1} \cdot \overline{T_3}\\
+&= T_3 \cdot \overline{T_1} + 0
++ \overline{T_3} \cdot \overline{T_1} \\
+&=(T_3 + \overline{T_3}) \overline{T_1} = \overline{T_1}
+\end{align*}
+The Queen who never lies can say "b)" if Trunk 1 does not contain the treasure.
+
+
+\noindent 
+b) "Exactly two of the inscriptions are true" = "Exact one of the inscriptions is false" =
+
+\begin{align*}
+  &= \overline{I_1} \cdot {I_2} \cdot {I_3} + 
+  {I_1} \cdot \overline{I_2} \cdot {I_3} + 
+  {I_1} \cdot {I_2} \cdot \overline{I_3} \\
+  &= \overline{T_3} \cdot {T_1} \cdot \overline{T_3} 
+  + {T_3} \cdot \overline{T_1} \cdot \overline{T_3} 
+  + {T_3} \cdot {T_1} \cdot {T_3}\\
+  &= \overline{T_3} \cdot {T_1} + 0
+  + {T_3} \cdot {T_1} \\
+  &=(\overline{T_3} + T_3) {T_1} = {T_1}
+\end{align*}
+The Queen who never lies can say "c)" if the Trunk 1 contains the treasure.
+
+
+\noindent 
+d) "All three inscriptions are true" = $T_3 \cdot T_1 \cdot \overline{T_3} = 0 $ = False. Hence the Queen can never say "d)".
+
+
+\end{sol}
+
 
 \begin{problem}[\cite{ldkr-ml2014-ExercisesBooklet}](20 marks\addtocounter{marks}{20})
 Kyle, Neal, and Grant find themselves trapped in a dark and cold dungeon
@@ -183,6 +234,56 @@ Given the fact that at LEAST ONE of the three statements on the three doors
 is true and at LEAST ONE of them is false, which door would lead the boys to
 safety?
 \end{problem}
+\begin{sol}
+\textbf{Language}
+\begin{itemize}
+  \item $r$ : "freedom is behind the red door"
+  \item $b$ : "freedom is behind the blue door"
+  \item $g$ : "freedom is behind the green door"
+\end{itemize}
+
+\textbf{Axioms}
+\begin{enumerate}
+  \item "behind one of the door is a path to freedom, behind the other two doors is an evil dragon"
+
+
+\begin{equation*}
+(r \wedge \neg b \wedge \neg g) \vee(\neg r \wedge b \wedge \neg g) \vee(\neg r \wedge \neg b \wedge g) \tag{2.4}
+\end{equation*}
+
+
+  \item "at least one of the three statements is true"
+
+
+\begin{equation*}
+r \vee \neg b \tag{2.5}
+\end{equation*}
+
+
+  \item "at least one of the three statements is false"
+
+
+\begin{equation*}
+\neg r \vee b \tag{2.6}
+\end{equation*}
+\end{enumerate}
+
+
+\textbf{Solution}
+\begin{center}
+\begin{tabular}{|c|c|c||c|c|c|}
+\hline
+$r$ & $b$ & $g$ & 2.5 & 2.6 & 2.5 $\wedge 2.6$ \\
+\hline\hline
+$T$ & $F$ & $F$ & $T$ & $F$ & $F$ \\
+$F$ & $T$ & $F$ & $F$ & $T$ & $F$ \\
+$F$ & $F$ & $T$ & $T$ & $T$ & $T$ \\
+\hline
+\end{tabular}
+\end{center}
+
+Freedom is behind the green door!
+\end{sol}
 
 
 \section{Predicates}
